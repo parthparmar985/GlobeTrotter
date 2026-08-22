@@ -1,0 +1,4 @@
+1. pages 
+2. components 
+3. details 
+4. authorizations 
