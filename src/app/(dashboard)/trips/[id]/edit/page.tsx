@@ -22,6 +22,7 @@ export default function EditTripPage() {
     coverPhoto: "",
     startDate: "",
     endDate: "",
+    budgetCap: "",
   });
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
@@ -37,6 +38,7 @@ export default function EditTripPage() {
           coverPhoto: trip.coverPhoto || "",
           startDate: toDateInput(trip.startDate),
           endDate: toDateInput(trip.endDate),
+          budgetCap: trip.budgetCap?.toString() || "",
         });
         setFetching(false);
       });
@@ -114,6 +116,18 @@ export default function EditTripPage() {
                 rows={4}
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="budgetCap">Budget cap (optional, USD)</Label>
+              <Input
+                id="budgetCap"
+                type="number"
+                min="0"
+                value={form.budgetCap}
+                onChange={(e) => setForm({ ...form, budgetCap: e.target.value })}
+                placeholder="e.g. 2000"
               />
             </div>
 

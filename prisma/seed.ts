@@ -19,13 +19,17 @@ const cities = [
   { name: "Mexico City", country: "Mexico", costIndex: 4, popularity: 80 },
 ];
 
+
+
 const activityTemplates = [
-  { name: "City walking tour", category: "Sightseeing", cost: 15, durationHrs: 3 },
-  { name: "Local food tasting tour", category: "Food", cost: 40, durationHrs: 2.5 },
-  { name: "Museum entry", category: "Sightseeing", cost: 20, durationHrs: 2 },
-  { name: "Sunset boat cruise", category: "Adventure", cost: 55, durationHrs: 2 },
-  { name: "Cooking class", category: "Food", cost: 60, durationHrs: 3 },
-  { name: "Hiking day trip", category: "Adventure", cost: 35, durationHrs: 6 },
+  { name: "Airport transfer", category: "Transport", cost: 25, durationHrs: 1 },
+  { name: "Hotel stay (per night)", category: "Stay", cost: 80, durationHrs: 24 },
+  { name: "City walking tour", category: "Activities", cost: 15, durationHrs: 3 },
+  { name: "Local food tasting tour", category: "Meals", cost: 40, durationHrs: 2.5 },
+  { name: "Museum entry", category: "Activities", cost: 20, durationHrs: 2 },
+  { name: "Sunset boat cruise", category: "Activities", cost: 55, durationHrs: 2 },
+  { name: "Cooking class", category: "Meals", cost: 60, durationHrs: 3 },
+  { name: "Hiking day trip", category: "Activities", cost: 35, durationHrs: 6 },
 ];
 
 async function main() {

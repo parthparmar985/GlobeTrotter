@@ -17,6 +17,7 @@ export default function NewTripPage() {
     coverPhoto: "",
     startDate: "",
     endDate: "",
+    budgetCap: "",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -93,6 +94,18 @@ export default function NewTripPage() {
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 placeholder="What's this trip about?"
                 rows={4}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="budgetCap">Budget cap (optional, USD)</Label>
+              <Input
+                id="budgetCap"
+                type="number"
+                min="0"
+                value={form.budgetCap}
+                onChange={(e) => setForm({ ...form, budgetCap: e.target.value })}
+                placeholder="e.g. 2000"
               />
             </div>
 

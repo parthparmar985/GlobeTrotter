@@ -53,7 +53,7 @@ export async function PUT(
     return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 });
   }
 
-  const { name, description, coverPhoto, startDate, endDate } = parsed.data;
+  const { name, description, coverPhoto, startDate, endDate, budgetCap } = parsed.data;
 
   const updated = await prisma.trip.update({
     where: { id },
@@ -63,6 +63,7 @@ export async function PUT(
       coverPhoto: coverPhoto || null,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
+      budgetCap: budgetCap ? Number(budgetCap) : null,
     },
   });
 

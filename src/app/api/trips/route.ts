@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const { name, description, coverPhoto, startDate, endDate } = parsed.data;
+  const { name, description, coverPhoto, startDate, endDate, budgetCap } = parsed.data;
 
   const trip = await prisma.trip.create({
     data: {
@@ -46,6 +46,7 @@ export async function POST(req: Request) {
       coverPhoto: coverPhoto || null,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
+      budgetCap: budgetCap ? Number(budgetCap) : null,
     },
   });
 
