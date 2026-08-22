@@ -14,6 +14,9 @@ export function Navbar() {
     { href: "/dashboard", label: "Dashboard" },
     { href: "/trips", label: "My Trips" },
     { href: "/cities", label: "Explore Cities" },
+    ...(session?.user && (session.user as any).role === "admin"
+    ? [{ href: "/admin", label: "Admin" }]
+    : []),
   ];
 
   return (
