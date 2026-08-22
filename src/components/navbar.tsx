@@ -13,6 +13,7 @@ export function Navbar() {
   const links = [
     { href: "/dashboard", label: "Dashboard" },
     { href: "/trips", label: "My Trips" },
+    { href: "/cities", label: "Explore Cities" },
   ];
 
   return (
