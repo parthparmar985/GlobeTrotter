@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  photoUrl  String?
+  language  String   @default("en")
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  trips     Trip[]
+}
+
+model Trip {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?
+  coverPhoto  String?
+  startDate   DateTime
+  endDate     DateTime
+  isPublic    Boolean  @default(false)
+  shareSlug   String?  @unique
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  stops       Stop[]
+}
+
+model City {
+  id         String  @id @default(cuid())
+  name       String
+  country    String
+  costIndex  Int
+  popularity Int      @default(0)
+  imageUrl   String?
+  stops      Stop[]
+  activities Activity[]
+}
+
+model Stop {
+  id         String   @id @default(cuid())
+  tripId     String
+  cityId     String
+  order      Int
+  startDate  DateTime
+  endDate    DateTime
+  trip       Trip     @relation(fields: [tripId], references: [id])
+  city       City     @relation(fields: [cityId], references: [id])
+  activities StopActivity[]
+}
+
+model Activity {
+  id             String  @id @default(cuid())
+  name           String
+  category       String
+  cost           Float
+  durationHrs    Float
+  description    String?
+  imageUrl       String?
+  cityId         String
+  city           City    @relation(fields: [cityId], references: [id])
+  stopActivities StopActivity[]
+}
+
+model StopActivity {
+  id         String   @id @default(cuid())
+  stopId     String
+  activityId String
+  date       DateTime
+  time       String?
+  stop       Stop     @relation(fields: [stopId], references: [id])
+  activity   Activity @relation(fields: [activityId], references: [id])
+}
